@@ -29,7 +29,7 @@ To get started with ADF please follow : <https://www.alfresco.com/abn/adf/docs/t
 
 If you are running ACS locally with containers, please remember to update the network accordingly in `devcontainer.json` and to configure correctly also the `proxy.conf.js`.
 
-```json
+```javascript
 // devcontainer.json
 
 // out of the box configuration is for alfresco network.
