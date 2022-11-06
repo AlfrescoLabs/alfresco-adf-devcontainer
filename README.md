@@ -15,9 +15,9 @@ The current setup is targeting Alfresco Development Framework 5.0. with `angular
 
 - Container engine - Docker Desktop or equivalent.
 
-## Get Started
+## Start developing in the container
 
-### Add to your project
+### Adding the container to your project
 
 Copy the `.devcontainer` folder in your project folder. When VSCode find the folder will ask to open the folder inside the container.
 
@@ -33,7 +33,7 @@ If you are running ACS locally with containers, please remember to update the ne
 // devcontainer.json
 
 // out of the box configuration is for alfresco network.
-  "runArgs": ["--name=adf-application", "--network=alfresco"],
+  "runArgs": ["--network=alfresco"],
 ```
 
 ```javascript
