@@ -25,7 +25,7 @@ Copy the `.devcontainer` folder in your project folder. When VSCode find the fol
 
 ### Creating a new ADF app
 
-Inside the container create a folder for your application and follow : <https://www.alfresco.com/abn/adf/docs/tutorials/creating-your-first-adf-application/>. The docker image used as dev environment already contains `yeoman`, `node`, `angular` and the `generator-alfresco-adf-app@latest`; you can jump directly to creating your first application with `yo alfresco-adf-app`.
+Create an empty folder for your application and copy the `.devcontainer` in the folder. Reopen the project in container from the vscode command panel (`Cmd+Shift+P`) `Dev Containers:Reopen in Container`. You know have all the tools to follow: <https://www.alfresco.com/abn/adf/docs/tutorials/creating-your-first-adf-application/>. The docker image used as dev environment already contains`yeoman`, `node`, `angular`and the`generator-alfresco-adf-app@latest`; you can jump directly to creating your first application with `yo alfresco-adf-app`.
 
 ### Connecting your application to an Alfresco Repo
 
