@@ -38,6 +38,8 @@ If you are running ACS locally with containers, please remember to update the ne
   "runArgs": ["--network=alfresco"],
 ```
 
+> **Info**: if you are using a network, make sure that the network has been created in your docker instance. `docker network ls`. If you try running on a non-existing network you will get an error while trying to run the devcontainer.
+
 ```javascript
 // file proxy.conf.js created by ADF generator
 
