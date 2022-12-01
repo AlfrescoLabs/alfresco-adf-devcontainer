@@ -14,7 +14,7 @@
   "workspaceFolder": "/usr/src",
   "shutdownAction": "stopContainer", // stop the container when closing window
   // arguments running the container name and network are set. change the network according to your Alfresco installation
-  "runArgs": ["--network=alfresco"],
+  //"runArgs": ["--network=alfresco"],
   // editor configuration
   "customizations": {
     "vscode": {
