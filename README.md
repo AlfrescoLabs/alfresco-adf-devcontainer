@@ -1,12 +1,10 @@
 # alfresco-adf-devcontainer
 
-A basic setup for leveraging devcontainer with vscode that facilitates front end programming with Alfresco Development Framework
+My personal setup for leveraging devcontainer with vscode that facilitates front end programming with Alfresco Development Framework
 
 ## Dependency Information
 
 The current setup is targeting Alfresco Development Framework 5.0. with `angular 14` and node `14.15`.
-
-> Note: adf generator is still pointing to `ADF4.X` with `angular 10`. It will be updated once the new version will be published.
 
 ## What you need to start
 
