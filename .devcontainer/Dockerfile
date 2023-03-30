@@ -5,8 +5,6 @@ FROM node:${NODE_VERSION}
 ARG ANGULAR_VERSION=14.1.3
 ARG NX_VERSION=14.2.1
 
-RUN apt install git
-
 # yeoman needs to run in a non root user
 USER node
 
