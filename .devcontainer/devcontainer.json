@@ -3,13 +3,17 @@
     "dockerfile": "Dockerfile",
     "args": {
       "ANGULAR_VERSION": "14.1.3",
-      "NODE_VERSION": "14.15.0"
+      "NODE_VERSION": "14.15.0",
+      "NX_VERSION": "14.2.1"
     }
   },
   "name": "Alfresco ADF env setup",
   "forwardPorts": [4200],
   // remote user is the user inside the container: be sure that match the one used in the dockerfile to install the adf-generator
   "remoteUser": "node",
+  "remoteEnv": {
+    "PATH": "${containerEnv:PATH}:~/.npm-global/bin"
+  },
   "workspaceMount": "source=${localWorkspaceFolder}/,target=/usr/src,type=bind,consistency=cached",
   "workspaceFolder": "/usr/src",
   "shutdownAction": "stopContainer", // stop the container when closing window
