@@ -57,3 +57,7 @@ module.exports = {
 
 There are many ways to get the Alfresco Repo, from trials for the enterprise edition to community docker compose.
 Please check if you are interest: <https://github.com/AlfrescoLabs/alfresco-docker-extension> for a docker desktop extension.
+
+## Working with Git
+This container doesn't keep into account Git configuration to perform remote actions (pull, push...). The reason is that the configuration change according to your operating system and access configuration on Github. In my way of working I keep a shell on host just to perform those actions.
+If you want to configure the container please refer to official documentation: https://code.visualstudio.com/remote/advancedcontainers/sharing-git-credentials
