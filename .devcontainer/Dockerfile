@@ -1,9 +1,11 @@
+# default Node version
 ARG NODE_VERSION=14.21-bullseye
 
 FROM node:${NODE_VERSION}
-
+# default values
 ARG ANGULAR_VERSION=14.1.3
 ARG NX_VERSION=14.2.1
+ARG ADF_GENERATOR_VERSION=5.1.0
 
 # yeoman needs to run in a non root user
 USER node
@@ -18,4 +20,4 @@ RUN npm i -g @angular/cli@${ANGULAR_VERSION} && \
     npm install -g nx@${NX_VERSION} && \
     npm install -g yo
     
-RUN npm install -g generator-alfresco-adf-app@latest
+RUN npm install -g generator-alfresco-adf-app@${ADF_GENERATOR_VERSION}
