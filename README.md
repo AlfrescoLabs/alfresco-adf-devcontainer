@@ -1,6 +1,15 @@
 # alfresco-adf-devcontainer
 
-My personal setup for leveraging devcontainer with vscode that facilitates front end programming with Alfresco Development Framework
+## Overview
+I added a deccontainer configuration to this project. It also contains personal setup of VSCode environment; please feel free to change and adjust. The configuration can be found in ./devcontainer/devcontainer.json, follow the Microsoft official documentation if needed https://code.visualstudio.com/docs/devcontainers/containers
+
+### Benefits of the container choice:
+- They are immutable
+- You have clear visibility and control on your stack. Node/Angular versions. without the need of installing multiple versions on your machine.
+- Windows, Mac behave the same. - we received some feedback in the past that some scripts were giving errors on windows; or performance degradation with WSL
+
+### Drawbacks
+You have some limitation or more work to do if you want to configure network or github push/pull from inside the container.
 
 ## Dependency Information
 
