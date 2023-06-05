@@ -1,14 +1,17 @@
 # alfresco-adf-devcontainer
 
 ## Overview
+
 I added a deccontainer configuration to this project. It also contains personal setup of VSCode environment; please feel free to change and adjust. The configuration can be found in ./devcontainer/devcontainer.json, follow the Microsoft official documentation if needed https://code.visualstudio.com/docs/devcontainers/containers
 
 ### Benefits of the container choice:
+
 - They are immutable
 - You have clear visibility and control on your stack. Node/Angular versions. without the need of installing multiple versions on your machine.
 - Windows, Mac behave the same. - we received some feedback in the past that some scripts were giving errors on windows; or performance degradation with WSL
 
 ### Drawbacks
+
 You have some limitation or more work to do if you want to configure network or github push/pull from inside the container.
 
 ## Dependency Information
@@ -68,5 +71,13 @@ There are many ways to get the Alfresco Repo, from trials for the enterprise edi
 Please check if you are interest: <https://github.com/AlfrescoLabs/alfresco-docker-extension> for a docker desktop extension.
 
 ## Working with Git
+
 This container doesn't keep into account Git configuration to perform remote actions (pull, push...). The reason is that the configuration change according to your operating system and access configuration on Github. In my way of working I keep a shell on host just to perform those actions.
 If you want to configure the container please refer to official documentation: https://code.visualstudio.com/remote/advancedcontainers/sharing-git-credentials
+
+## Compatibility Table
+
+| ADF   | ANGULAR_VERSION | NODE_VERSION | NX     | ADF_GENERATOR | ACA / ADW |
+| ----- | --------------- | ------------ | ------ | ------------- | --------- |
+| 6.1.0 | 14.2.11         | 18.16.0      | 16.3.2 | 6.1.1         | >=4.1     |
+| 5.1.0 | 14.1.3          | 14.15.0      | 14.2.1 | 5.1.0         | 3.x       |
