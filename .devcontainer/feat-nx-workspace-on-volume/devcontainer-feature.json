@@ -1,0 +1,10 @@
+{
+  "id": "nx-workspace-volume",
+  "version": "0.1.0",
+  "name": "Mount nx-cache and .angular as volume",
+  "mounts": [
+    "source=${localWorkspaceFolderBasename}-nxcache,target=${containerWorkspaceFolder}/nxcache,type=volume",
+    "source=${localWorkspaceFolderBasename}-angular,target=${containerWorkspaceFolder}/.angular,type=volume"
+  ],
+  "postCreateCommand": "sudo chown node:node nxcache .angular"
+}

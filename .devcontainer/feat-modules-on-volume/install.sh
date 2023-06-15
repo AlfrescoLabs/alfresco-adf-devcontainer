@@ -1,0 +1,1 @@
+echo "Mounting node_modules on a volume, this will improve performance. Remember to not delete the folder manually and use rm -rf node_module/* instead"
