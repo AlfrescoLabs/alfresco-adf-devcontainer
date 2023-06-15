@@ -1,0 +1,14 @@
+{
+  "id": "nx-workspace",
+  "version": "0.1.0",
+  "name": "Mount nxcache as volume",
+  "mounts": [
+    "source=${localWorkspaceFolderBasename}-nxcache,target=${containerWorkspaceFolder}/nxcache,type=volume"
+  ],
+  "options": {
+    "workspaceFolder": {
+      "type": "string",
+      "description": "Workspace folder"
+    }
+  }
+}

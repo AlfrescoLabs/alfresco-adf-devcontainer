@@ -4,20 +4,19 @@
     "args": {
       "ANGULAR_VERSION": "14.2.11",
       "NODE_VERSION": "18.16.0",
-      "NX_VERSION": "16.3.2",
-      "ADF_GENERATOR_VERSION": "6.1.1"
+      "NX_VERSION": "16.3.2"
     }
   },
-  "name": "Alfresco ADF enDockcd ..v setup",
-  //"forwardPorts": [4200],
+  "name": "DevContainer for Alfresco FE development",
   // remote user is the user inside the container: be sure that match the one used in the dockerfile to install the adf-generator
   "remoteUser": "node",
+  "features": {},
   "remoteEnv": {
     "PATH": "${containerEnv:PATH}:~/.npm-global/bin"
   },
-  "workspaceMount": "source=${localWorkspaceFolder}/,target=/usr/src,type=bind,consistency=cached",
-  "workspaceFolder": "/usr/src",
-  "shutdownAction": "stopContainer", // stop the container when closing window
+  "workspaceMount": "source=${localWorkspaceFolder}/,target=${containerWorkspaceFolder},type=bind,consistency=cached",
+  "workspaceFolder": "/workspace",
+  "shutdownAction": "stopContainer",
   // arguments running the container name and network are set. change the network according to your Alfresco installation
   //"runArgs": ["--network=alfresco"],
   // editor configuration
@@ -38,7 +37,8 @@
         "dbaeumer.vscode-eslint",
         "GitHub.github-vscode-theme",
         "esbenp.prettier-vscode",
-        "yzhang.markdown-all-in-one"
+        "yzhang.markdown-all-in-one",
+        "firsttris.vscode-jest-runner"
       ]
     }
   }

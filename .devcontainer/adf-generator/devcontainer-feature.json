@@ -1,0 +1,13 @@
+{
+  "id": "adf-generator",
+  "version": "0.1.0",
+  "name": "Add the Yeoman generator to Scaffold new ADF applications",
+  "options": {
+    "AdfGeneratorVersion": {
+      "type": "string",
+      "description": "Targeted ADF version",
+      "proposals": ["6.1.1", "5.1.0"],
+      "default": "6.1.1"
+    }
+  }
+}
