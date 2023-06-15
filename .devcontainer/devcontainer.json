@@ -21,6 +21,13 @@
   // arguments running the container name and network are set. change the network according to your Alfresco installation
   //"runArgs": ["--network=alfresco"],
   // editor configuration
+
+  // "mounts": [
+  //   "source=${localWorkspaceFolderBasename}-node_modules,target=${containerWorkspaceFolder}/node_modules,type=volume",
+  //   "source=${localWorkspaceFolderBasename}-nxcache,target=${containerWorkspaceFolder}/nxcache,type=volume",
+  //   "source=${localWorkspaceFolderBasename}-angular,target=${containerWorkspaceFolder}/.angular,type=volume"
+  // ],
+  //"postCreateCommand": "sudo chown node node_modules",
   "customizations": {
     "vscode": {
       "settings": {
