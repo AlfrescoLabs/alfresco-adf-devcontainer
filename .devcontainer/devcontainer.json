@@ -5,16 +5,16 @@
       "ANGULAR_VERSION": "14.2.11",
       "NODE_VERSION": "18.16.0",
       "NX_VERSION": "16.3.2",
-      "ADF_GENERATOR_VERSION": "6.1.1",
       "WORKSPACE_DIR": "${containerWorkspaceFolder}"
     }
   },
-  "name": "Alfresco ADF enDockcd ..v setup",
+  "name": "DevContainer for Alfresco FE development",
   // remote user is the user inside the container: be sure that match the one used in the dockerfile to install the adf-generator
   "remoteUser": "node",
   "features": {
-    "./feat-modules-on-volume": {},
-    "./feat-nx-workspace-on-volume": {}
+    //"./feat-modules-on-volume": {},
+    "./feat-nx-workspace-on-volume": {},
+    "./feat-add-adf-generator": { "AdfGeneratorVersion": "6.1.1" }
   },
   "remoteEnv": {
     "PATH": "${containerEnv:PATH}:~/.npm-global/bin"

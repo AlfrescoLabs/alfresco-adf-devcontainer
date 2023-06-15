@@ -6,7 +6,6 @@ FROM node:${NODE_VERSION}
 # default values
 ARG ANGULAR_VERSION=14.1.3
 ARG NX_VERSION=14.2.1
-ARG ADF_GENERATOR_VERSION=5.1.0
 ARG USERNAME=node
 ARG WORKSPACE_DIR=/workspace
 
@@ -18,7 +17,6 @@ RUN apt-get update \
     && git config --system --add safe.directory ${WORKSPACE_DIR}
 
 
-# yeoman needs to run in a non root user
 USER node
 
 # resolve the npm EACCESS problem : https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally
@@ -28,6 +26,4 @@ RUN mkdir ~/.npm-global \
     && npm config set prefix '~/.npm-global'
 
 RUN npm i -g @angular/cli@${ANGULAR_VERSION} \
-    && npm install -g nx@${NX_VERSION} \
-    && npm install -g yo \
-    && npm install -g generator-alfresco-adf-app@${ADF_GENERATOR_VERSION}
+    && npm install -g nx@${NX_VERSION}
