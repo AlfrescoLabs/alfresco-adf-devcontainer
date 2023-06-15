@@ -1,0 +1,15 @@
+{
+  "id": "angular-workspace",
+  "version": "0.1.0",
+  "name": "Mount node_modules and .angular as volume to improve performance",
+  "mounts": [
+    "source=${localWorkspaceFolderBasename}-node_modules,target=${containerWorkspaceFolder}/node_modules,type=volume",
+    "source=${localWorkspaceFolderBasename}-angular,target=${containerWorkspaceFolder}/.angular,type=volume"
+  ],
+  "options": {
+    "workspaceFolder": {
+      "type": "string",
+      "description": "Workspace folder"
+    }
+  }
+}

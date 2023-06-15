@@ -10,15 +10,7 @@
   "name": "DevContainer for Alfresco FE development",
   // remote user is the user inside the container: be sure that match the one used in the dockerfile to install the adf-generator
   "remoteUser": "node",
-  "features": {
-    "./feat-modules-on-volume": {
-      "workspaceFolder": "${containerWorkspaceFolder}"
-    },
-    "./feat-nx-workspace-on-volume": {
-      "workspaceFolder": "${containerWorkspaceFolder}"
-    }
-    //"./feat-add-adf-generator": { "AdfGeneratorVersion": "6.1.1" }
-  },
+  "features": {},
   "remoteEnv": {
     "PATH": "${containerEnv:PATH}:~/.npm-global/bin"
   },

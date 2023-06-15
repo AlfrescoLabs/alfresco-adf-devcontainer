@@ -2,9 +2,11 @@
 
 ## Overview
 
-I added a deccontainer configuration to this project. It also contains personal setup of VSCode environment; please feel free to change and adjust. The configuration can be found in ./devcontainer/devcontainer.json, follow the Microsoft official documentation if needed https://code.visualstudio.com/docs/devcontainers/containers
+I added a devcontainer configuration to this project. It contains personal setup of VSCode environment; please feel free to propose changes and ideas.
 
-### Benefits of the container choice:
+The configuration can be found in ./devcontainer/devcontainer.json, follow the Microsoft official documentation if needed https://code.visualstudio.com/docs/devcontainers/containers.
+
+### Benefits of the container choice
 
 - They are immutable
 - You have clear visibility and control on your stack. Node/Angular versions. without the need of installing multiple versions on your machine.
@@ -12,11 +14,8 @@ I added a deccontainer configuration to this project. It also contains personal 
 
 ### Drawbacks
 
-You have some limitation or more work to do if you want to configure network or github push/pull from inside the container.
-
-## Dependency Information
-
-The current setup is targeting Alfresco Development Framework 5.0. with `angular 14` and node `14.15`.
+- Performance hit. I included some improvements but will never get as fast as working on the host
+- There are still some limitation or more work to do if you want to configure network or github push/pull from inside the container.
 
 ## What you need to start
 
@@ -25,27 +24,91 @@ The current setup is targeting Alfresco Development Framework 5.0. with `angular
 
 - Container engine - Docker Desktop or equivalent.
 
-## Start developing in the container
+## Structure of the configuration
 
-### Adding the container to your project
+I created a base image for `node` and `angular`, then you can compose devcontainer [features](https://containers.dev/implementors/features/):
 
-Copy the `.devcontainer` folder in your project folder. When VSCode find the folder will ask to open the folder inside the container.
+- **adf-generator**: Add `yeoman` and `adf-generator` to the container
+- **angular-workspace**: Mount `node_modules` and `.angular` as volumes in order to improve response time
+- **nx-workspace**: Mount `nxcache` as volume
 
-> Note: This environment was tested on Mac, no feedback yet on how it behaves on Windows or Linux.
+## Where to start
 
-### Creating a new ADF app
+While I dedicated time to solve performance and modularization of the configuration, there is some manual steps to do.
 
-Create an empty folder for your application and copy the `.devcontainer` in the folder. Reopen the project in container from the vscode command panel (`Cmd+Shift+P`) `Dev Containers:Reopen in Container`. You know have all the tools to follow: <https://www.alfresco.com/abn/adf/docs/tutorials/creating-your-first-adf-application/>. The docker image used as dev environment already contains`yeoman`, `node`, `angular`and the`generator-alfresco-adf-app@latest`; you can jump directly to creating your first application with `yo alfresco-adf-app`.
+1. Copy the `./devcontainer` folder in the project workspace. VSCode expect the folder to be at the root of your project.
+2. Edit `./devcontainer/devcontainer.json` to configure, customize, add the appropriate features
+3. Open in container: from the vscode command panel (`Cmd+Shift+P`) `Dev Containers:Reopen in Container`
 
-### Connecting your application to an Alfresco Repo
+## Use case and configuration
 
-If you are running ACS locally with containers, please remember to update the network accordingly in `devcontainer.json` and to configure correctly also the `proxy.conf.js`.
+### Create a new ADF Application
+
+If you are starting from <https://www.alfresco.com/abn/adf/docs/tutorials/creating-your-first-adf-application/> those steps will provide a setup with `yeoman`, `node`, `angular`and the`generator-alfresco-adf-app`; you can jump directly to creating your first application with `yo alfresco-adf-app`.
+
+1. Create an empty folder for your application and copy the`.devcontainer`in the folder.
+2. **Before** opening in a container - Edit the`./devcontainer/devcontainer.json`
+   1. Configure the right version of the stack according to the [table](#compatibility-table)
+   2. Add the`adf-generator` feature.
+
+```json
+//devcontainter.json
+//The feature expect the generator version as argument.
+"features": {
+    "./adf-generator": { "AdfGeneratorVersion": "6.1.1" }
+  },
+```
+
+3. Reopen the project in container .
+
+You now have all the tools to run `yo` and follow: <https://www.alfresco.com/abn/adf/docs/tutorials/creating-your-first-adf-application/>.
+
+Once the application is created you can copy the `./devcontainer` folder in the application folder and check the [Angular Application](#angular-application)
+
+### Angular application
+
+If you are starting from an angular project.
+
+1. Copy the `.devcontainer` folder all its content at the root of your application folder.
+2. **Before** opening in a container - Edit the `./devcontainer/devcontainer.json`
+   1. Configure the right version of the stack according to the [table](#compatibility-table)
+   2. Change Name to the workspace and check other properties in `devcontainer.json`
+   3. Add the `angular-workspace` feature.
+
+```json
+//devcontainter.json
+  "features": {
+    "./angular-workspace": {
+      "workspaceFolder": "${containerWorkspaceFolder}"
+    },
+  },
+```
+
+> **IMPORTANT** do not manually delete folders that are mounted as volumes, in this case, instead of `rm -rf node_modules` use `rm -rf node_modules/*` or the mount risk to be lost. The same applies to `.angular` folder.
+
+### NX Workspace (ACA or ADW)
+
+if you are developing inside a NX workspace or working with ACA or ADW, the configuration is the same of [Angular Application](#angular-application), plus there is another feature to be added to be sure also `nxcache` is mounted on a volume.
+
+```json
+//devcontainter.json
+  "features": {
+    "./angular-workspace": {
+      "workspaceFolder": "${containerWorkspaceFolder}"
+    },
+    "./nx-workspace": {
+      "workspaceFolder": "${containerWorkspaceFolder}"
+    },
+  },
+```
+
+## Connecting your application to an Alfresco Repo
+
+If you are running ACS locally with containers, remember to update the network accordingly in `devcontainer.json` and to configure correctly also the `proxy.conf.js`.
 
 ```javascript
 // devcontainer.json
-
-// out of the box configuration is for alfresco network.
-  "runArgs": ["--network=alfresco"],
+  "runArgs": ["--network=your-network-name"],
 ```
 
 > **Info**: if you are using a network, make sure that the network has been created in your docker instance. `docker network ls`. If you try running on a non-existing network you will get an error while trying to run the devcontainer.
@@ -87,13 +150,18 @@ If you want to configure the container please refer to official documentation: h
 Developing in container may be slow, especially when the folder structure gets bigger and there are many R/W that has to keep in sync between host and container.
 
 On Mac (light improvement):
+
 - Choose `VirtioFS` as file sharing implementation inside your docker desktop
 
+On Windows:
+
+- I couldn't test directly but check the WSL config <https://code.visualstudio.com/remote/advancedcontainers/improve-performance#_store-your-source-code-in-the-wsl-2-filesystem-on-windows>
+
 ### Mount specific folders on volumes (big improvement)
+
+This is the approach that has been taken in the `angular-workspace` and `nx-workspace` features.
+
 Identify big folders that:
+
 - Are part of your `.gitignore` file
 - Are subject to frequent R/W operations or contains a lot of file
-
-Perfect candidate `node_modules`.
-
-> **Important** Don't delete manually the folder once is mounted on `volume` or you risk to loose connection to it. So, assuming `node_modules` was mounted, don't do `rm -rf node_moduls` but instead `rm -rf node_modules/*`.

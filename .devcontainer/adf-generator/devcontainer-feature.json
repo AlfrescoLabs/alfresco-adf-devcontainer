@@ -1,5 +1,5 @@
 {
-  "id": "add-adf-generator",
+  "id": "adf-generator",
   "version": "0.1.0",
   "name": "Add the Yeoman generator to Scaffold new ADF applications",
   "options": {
