@@ -6,5 +6,10 @@
     "source=${localWorkspaceFolderBasename}-nxcache,target=${containerWorkspaceFolder}/nxcache,type=volume",
     "source=${localWorkspaceFolderBasename}-angular,target=${containerWorkspaceFolder}/.angular,type=volume"
   ],
-  "postCreateCommand": "sudo chown node:node nxcache .angular"
+  "options": {
+    "workspaceFolder": {
+      "type": "string",
+      "description": "Workspace Mount"
+    }
+  }
 }

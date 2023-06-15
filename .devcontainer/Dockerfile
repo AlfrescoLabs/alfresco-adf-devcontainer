@@ -6,16 +6,6 @@ FROM node:${NODE_VERSION}
 # default values
 ARG ANGULAR_VERSION=14.1.3
 ARG NX_VERSION=14.2.1
-ARG USERNAME=node
-ARG WORKSPACE_DIR=/workspace
-
-# to improve performance node user needs to be able to run sudo to change ownership of installed modules.
-RUN apt-get update \
-    && apt-get -y install --no-install-recommends sudo \
-    && echo ${USERNAME} ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/${USERNAME} \
-    && chmod 0440 /etc/sudoers.d/${USERNAME} \
-    && git config --system --add safe.directory ${WORKSPACE_DIR}
-
 
 USER node
 

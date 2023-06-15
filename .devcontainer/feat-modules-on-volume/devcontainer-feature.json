@@ -5,5 +5,11 @@
   "mounts": [
     "source=${localWorkspaceFolderBasename}-node_modules,target=${containerWorkspaceFolder}/node_modules,type=volume"
   ],
-  "postCreateCommand": "sudo chown node:node node_modules"
+  "options": {
+    "workspaceFolder": {
+      "type": "string",
+      "description": "Workspace Mount"
+    }
+  }
+  //"postCreateCommand": "sudo chown node:node node_modules"
 }

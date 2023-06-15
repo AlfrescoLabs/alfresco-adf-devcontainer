@@ -6,8 +6,8 @@
     "AdfGeneratorVersion": {
       "type": "string",
       "description": "Targeted ADF version",
-      "proposals": ["6.1.0", "5.1.0"],
-      "default": "6.1.0"
+      "proposals": ["6.1.1", "5.1.0"],
+      "default": "6.1.1"
     }
   }
 }

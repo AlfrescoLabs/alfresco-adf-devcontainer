@@ -4,24 +4,27 @@
     "args": {
       "ANGULAR_VERSION": "14.2.11",
       "NODE_VERSION": "18.16.0",
-      "NX_VERSION": "16.3.2",
-      "WORKSPACE_DIR": "${containerWorkspaceFolder}"
+      "NX_VERSION": "16.3.2"
     }
   },
   "name": "DevContainer for Alfresco FE development",
   // remote user is the user inside the container: be sure that match the one used in the dockerfile to install the adf-generator
   "remoteUser": "node",
   "features": {
-    //"./feat-modules-on-volume": {},
-    "./feat-nx-workspace-on-volume": {},
-    "./feat-add-adf-generator": { "AdfGeneratorVersion": "6.1.1" }
+    "./feat-modules-on-volume": {
+      "workspaceFolder": "${containerWorkspaceFolder}"
+    },
+    "./feat-nx-workspace-on-volume": {
+      "workspaceFolder": "${containerWorkspaceFolder}"
+    }
+    //"./feat-add-adf-generator": { "AdfGeneratorVersion": "6.1.1" }
   },
   "remoteEnv": {
     "PATH": "${containerEnv:PATH}:~/.npm-global/bin"
   },
   "workspaceMount": "source=${localWorkspaceFolder}/,target=${containerWorkspaceFolder},type=bind,consistency=cached",
   "workspaceFolder": "/workspace",
-  "shutdownAction": "stopContainer", // stop the container when closing window
+  "shutdownAction": "stopContainer",
   // arguments running the container name and network are set. change the network according to your Alfresco installation
   //"runArgs": ["--network=alfresco"],
   // editor configuration
