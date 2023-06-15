@@ -81,3 +81,19 @@ If you want to configure the container please refer to official documentation: h
 | ----- | --------------- | ------------ | ------ | ------------- | --------- |
 | 6.1.0 | 14.2.11         | 18.16.0      | 16.3.2 | 6.1.1         | >=4.1     |
 | 5.1.0 | 14.1.3          | 14.15.0      | 14.2.1 | 5.1.0         | 3.x       |
+
+## Improve Performance
+
+Developing in container may be slow, especially when the folder structure gets bigger and there are many R/W that has to keep in sync between host and container.
+
+On Mac (light improvement):
+- Choose `VirtioFS` as file sharing implementation inside your docker desktop
+
+### Mount specific folders on volumes (big improvement)
+Identify big folders that:
+- Are part of your `.gitignore` file
+- Are subject to frequent R/W operations or contains a lot of file
+
+Perfect candidate `node_modules`.
+
+> **Important** Don't delete manually the folder once is mounted on `volume` or you risk to loose connection to it. So, assuming `node_modules` was mounted, don't do `rm -rf node_moduls` but instead `rm -rf node_modules/*`.
