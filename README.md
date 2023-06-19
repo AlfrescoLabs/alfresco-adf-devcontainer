@@ -5,6 +5,8 @@ This project contains personal setup of VSCode environment; please feel free to 
 
 The configuration can be found in ./devcontainer/devcontainer.json, follow the Microsoft official documentation if needed <https://code.visualstudio.com/docs/devcontainers/containers>.
 
+I tested the containers on Mac (M1 and Intel), on Win though I added some guidelines I didn't have the chance to test it directly and feedback are appreciated.
+
 ### Benefits of the container choice
 
 - They are immutable
