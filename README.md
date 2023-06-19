@@ -1,8 +1,7 @@
 # alfresco-adf-devcontainer
 
 ## Overview
-
-I added a devcontainer configuration to this project. It contains personal setup of VSCode environment; please feel free to propose changes and ideas.
+This project contains personal setup of VSCode environment; please feel free to propose changes and ideas.
 
 The configuration can be found in ./devcontainer/devcontainer.json, follow the Microsoft official documentation if needed <https://code.visualstudio.com/docs/devcontainers/containers>.
 
@@ -34,7 +33,7 @@ The configuration can be found in ./devcontainer/devcontainer.json, follow the M
 
 ## Structure of the configuration
 
-I created a base image for `node` and `angular`, then you can compose devcontainer [features](https://containers.dev/implementors/features/):
+I created a base image for `node` and `angular`, then you can compose the devcontainer adding [features](https://containers.dev/implementors/features/):
 
 - **adf-generator**: Add `yeoman` and `adf-generator` to the container
 - **angular-workspace**: Mount `node_modules` and `.angular` as volumes in order to improve response time
