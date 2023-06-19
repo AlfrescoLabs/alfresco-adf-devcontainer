@@ -157,7 +157,7 @@ If you want to configure the container please refer to official documentation: <
 
 Developing in container may be slow, especially when the folder structure gets bigger and there are many R/W that has to keep in sync between host and container.
 
-## Mount specific folders on volumes
+### Mount specific folders on volumes
 
 This is the approach that has been taken in the `angular-workspace` and `nx-workspace` features. If you need more folder with the same approach all the commands needed are contained in the specific feature.
 
