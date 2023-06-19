@@ -14,7 +14,7 @@ The configuration can be found in ./devcontainer/devcontainer.json, follow the M
 
 ### Drawbacks
 
-- Performance hit. I included some improvements but will never get as fast as working on the host
+- Performance. Containers introduce an abstraction layer, I included some improvements but will never get as fast as working on the host
 - There are still some limitation or more work to do if you want to configure network or github push/pull from inside the container.
 
 ## What you need to start
@@ -23,6 +23,14 @@ The configuration can be found in ./devcontainer/devcontainer.json, follow the M
   <https://code.visualstudio.com/docs/devcontainers/containers>
 
 - Container engine - Docker Desktop or equivalent.
+
+## Docker Desktop Configuration
+### Mac OS
+- Choose `VirtioFS` as file sharing implementation
+
+### Win OS
+- Enable WSL 2 Engine
+- Source folder shall be on WSL file system ( if you mix WSL and Windows file system you will experience an issue in refreshing content after a change - ref: [docker win issue](https://github.com/docker/for-win/issues/8479)
 
 ## Structure of the configuration
 
@@ -149,19 +157,12 @@ If you want to configure the container please refer to official documentation: <
 
 Developing in container may be slow, especially when the folder structure gets bigger and there are many R/W that has to keep in sync between host and container.
 
-On Mac (light improvement):
+## Mount specific folders on volumes
 
-- Choose `VirtioFS` as file sharing implementation inside your docker desktop
-
-On Windows:
-
-- I couldn't test directly but check the WSL config <https://code.visualstudio.com/remote/advancedcontainers/improve-performance#_store-your-source-code-in-the-wsl-2-filesystem-on-windows>
-
-### Mount specific folders on volumes (big improvement)
-
-This is the approach that has been taken in the `angular-workspace` and `nx-workspace` features.
+This is the approach that has been taken in the `angular-workspace` and `nx-workspace` features. If you need more folder with the same approach all the commands needed are contained in the specific feature.
 
 Identify big folders that:
 
 - Are part of your `.gitignore` file
 - Are subject to frequent R/W operations or contains a lot of file
+
