@@ -61,7 +61,7 @@ If you are starting from <https://www.alfresco.com/abn/adf/docs/tutorials/creati
 1. Create an empty folder for your application and copy the`.devcontainer`in the folder.
 2. **Before** opening in a container - Edit the`./devcontainer/devcontainer.json`
    1. Configure the right version of the stack according to the [table](#compatibility-table)
-   2. Add the`adf-generator` feature.
+   2. Add the`adf-generator` feature and configure the right version of the generator.
 
 ```json
 //devcontainter.json
