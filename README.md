@@ -35,7 +35,7 @@ I tested the containers on Mac (M1 and Intel), on Win though I added some guidel
 
 ## Structure of the configuration
 
-I created a base image for `node` and `angular`, then you can compose the devcontainer adding [features](https://containers.dev/implementors/features/):
+The Dockerfile describe a base image for `node` and `angular`, then you can compose the devcontainer adding [features](https://containers.dev/implementors/features/):
 
 - **adf-generator**: Add `yeoman` and `adf-generator` to the container
 - **angular-workspace**: Mount `node_modules` and `.angular` as volumes in order to improve response time
@@ -49,7 +49,10 @@ While I dedicated time to solve performance and modularization of the configurat
 2. Edit `./devcontainer/devcontainer.json` to configure, customize, add the appropriate features
 3. Open in container: from the vscode command panel (`Cmd+Shift+P`) `Dev Containers:Reopen in Container`
 
-## Use case and configuration
+### Three Main use cases
+1. [New ADF Application](#create-a-new-adf-application)
+2. [Simple Angular App](#angular-application)
+3. [NX Workspace - ADW, ACA](#nx-workspace-aca-or-adw)
 
 ### Create a new ADF Application
 
@@ -151,8 +154,8 @@ If you want to configure the container please refer to official documentation: <
 
 | ADF   | ANGULAR_VERSION | NODE_VERSION | NX     | ADF_GENERATOR | ACA / ADW |
 | ----- | --------------- | ------------ | ------ | ------------- | --------- |
-| 6.1.0 | 14.2.11         | 18.16.0      | 16.3.2 | 6.1.1         | >=4.1     |
-| 5.1.0 | 14.1.3          | 14.15.0      | 14.2.1 | 5.1.0         | 3.x       |
+| 6.1.0 | 14.2.11         | 18-bullseye      | 16.3.2 | 6.1.1         | >=4.1     |
+| 5.1.0 | 14.1.3          | 14-bullseye     | 14.2.1 | 5.1.0         | 3.x, 4.0      |
 
 ## Improve Performance
 
