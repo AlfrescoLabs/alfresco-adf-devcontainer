@@ -30,8 +30,14 @@ I tested the containers on Mac (M1 and Intel), on Win though I added some guidel
 - Choose `VirtioFS` as file sharing implementation
 
 ### Win OS
+[Docker documentation](https://docs.docker.com/desktop/install/windows-install/)
+
+If you have installed WSL 2 (recommended option from docker):
 - Enable WSL 2 Engine
 - Source folder shall be on WSL file system ( if you mix WSL and Windows file system you will experience an issue in refreshing content after a change - ref: [docker win issue](https://github.com/docker/for-win/issues/8479)
+
+without WSL
+- Hyper-V and Containers Windows features must be enabled  
 
 ## Structure of the configuration
 
