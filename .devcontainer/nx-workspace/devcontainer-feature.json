@@ -10,5 +10,10 @@
       "type": "string",
       "description": "Workspace folder"
     }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": ["nrwl.angular-console"]
+    }
   }
 }
