@@ -11,5 +11,15 @@
       "type": "string",
       "description": "Workspace folder"
     }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "johnpapa.Angular2",
+        "Angular.ng-template",
+        "esbenp.prettier-vscode",
+        "firsttris.vscode-jest-runner"
+      ]
+    }
   }
 }
