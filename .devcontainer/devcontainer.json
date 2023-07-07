@@ -10,15 +10,8 @@
   "name": "DevContainer for Alfresco FE development",
   // remote user is the user inside the container: be sure that match the one used in the dockerfile to install the adf-generator
   "remoteUser": "node",
-  "features": {
-    "./angular-workspace": {
-      "workspaceFolder": "${containerWorkspaceFolder}"
-    },
-    "./nx-workspace": {
-      "workspaceFolder": "${containerWorkspaceFolder}"
-    }
-  },
-  //"features": {},
+  "features": {},
+
   "remoteEnv": {
     "PATH": "${containerEnv:PATH}:~/.npm-global/bin"
   },
@@ -44,7 +37,8 @@
       "extensions": [
         "dbaeumer.vscode-eslint",
         "GitHub.github-vscode-theme",
-        "yzhang.markdown-all-in-one"
+        "yzhang.markdown-all-in-one",
+        "pomdtr.excalidraw-editor"
       ]
     }
   }
