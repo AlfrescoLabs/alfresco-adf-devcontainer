@@ -1,6 +1,7 @@
 # alfresco-adf-devcontainer
 
 ## Overview
+
 This project contains personal setup of VSCode environment; please feel free to propose changes and ideas.
 
 The configuration can be found in ./devcontainer/devcontainer.json, follow the Microsoft official documentation if needed <https://code.visualstudio.com/docs/devcontainers/containers>.
@@ -26,18 +27,23 @@ I tested the containers on Mac (M1 and Intel), on Win though I added some guidel
 - Container engine - Docker Desktop or equivalent.
 
 ## Docker Desktop Configuration
+
 ### Mac OS
+
 - Choose `VirtioFS` as file sharing implementation
 
 ### Win OS
+
 [Docker documentation](https://docs.docker.com/desktop/install/windows-install/)
 
 If you have installed WSL 2 (recommended option from docker):
+
 - Enable WSL 2 Engine
 - Source folder shall be on WSL file system ( if you mix WSL and Windows file system you will experience an issue in refreshing content after a change - ref: [docker win issue](https://github.com/docker/for-win/issues/8479)
 
 without WSL
-- Hyper-V and Containers Windows features must be enabled  
+
+- Hyper-V and Containers Windows features must be enabled
 
 ## Structure of the configuration
 
@@ -55,52 +61,34 @@ While I dedicated time to solve performance and modularization of the configurat
 2. Edit `./devcontainer/devcontainer.json` to configure, customize, add the appropriate features
 3. Open in container: from the vscode command panel (`Cmd+Shift+P`) `Dev Containers:Reopen in Container`
 
-### Three Main use cases
+### Main use cases
+
 1. [New ADF Application](#create-a-new-adf-application)
-2. [Simple Angular App](#angular-application)
-3. [NX Workspace - ADW, ACA](#nx-workspace-aca-or-adw)
+2. [NX Workspace - ADW, ACA](#nx-workspace-aca-or-adw)
 
 ### Create a new ADF Application
 
 If you are starting from <https://www.alfresco.com/abn/adf/docs/tutorials/creating-your-first-adf-application/> those steps will provide a setup with `yeoman`, `node`, `angular`and the`generator-alfresco-adf-app`; you can jump directly to creating your first application with `yo alfresco-adf-app`.
 
-1. Create an empty folder for your application and copy the`.devcontainer`in the folder.
+1. Create a folder for your application and copy the`.devcontainer`in the folder.
 2. **Before** opening in a container - Edit the`./devcontainer/devcontainer.json`
    1. Configure the right version of the stack according to the [table](#compatibility-table)
-   2. Add the`adf-generator` feature and configure the right version of the generator.
+   2. Add the`adf-generator` and `angular-workspace` features. Configure the right version of the generator.
 
 ```json
 //devcontainter.json
 //The feature expect the generator version as argument.
 "features": {
-    "./adf-generator": { "AdfGeneratorVersion": "6.1.1" }
-  },
-```
-
-3. Reopen the project in container .
-
-You now have all the tools to run `yo` and follow: <https://www.alfresco.com/abn/adf/docs/tutorials/creating-your-first-adf-application/>.
-
-Once the application is created you can copy the `./devcontainer` folder in the application folder and check the [Angular Application](#angular-application)
-
-### Angular application
-
-If you are starting from an angular project.
-
-1. Copy the `.devcontainer` folder all its content at the root of your application folder.
-2. **Before** opening in a container - Edit the `./devcontainer/devcontainer.json`
-   1. Configure the right version of the stack according to the [table](#compatibility-table)
-   2. Change Name to the workspace and check other properties in `devcontainer.json`
-   3. Add the `angular-workspace` feature.
-
-```json
-//devcontainter.json
-  "features": {
+    "./adf-generator": { "AdfGeneratorVersion": "6.1.1" },
     "./angular-workspace": {
       "workspaceFolder": "${containerWorkspaceFolder}"
-    },
+    }
   },
 ```
+3. Reopen the project in container .
+
+You now have all the tools to run `yo` and follow: <https://www.alfresco.com/abn/adf/docs/tutorials/creating-your-first-adf-application/>. Because we want to generate code in the current folder do not provide a name.
+
 
 > **IMPORTANT** do not manually delete folders that are mounted as volumes, in this case, instead of `rm -rf node_modules` use `rm -rf node_modules/*` or the mount risk to be lost. The same applies to `.angular` folder.
 
@@ -160,8 +148,8 @@ If you want to configure the container please refer to official documentation: <
 
 | ADF   | ANGULAR_VERSION | NODE_VERSION | NX     | ADF_GENERATOR | ACA / ADW |
 | ----- | --------------- | ------------ | ------ | ------------- | --------- |
-| 6.1.0 | 14.2.11         | 18-bullseye      | 16.3.2 | 6.1.1         | >=4.1     |
-| 5.1.0 | 14.1.3          | 14-bullseye     | 14.2.1 | 5.1.0         | 3.x, 4.0      |
+| 6.1.0 | 14.2.11         | 18-bullseye  | 16.3.2 | 6.1.1         | >=4.1     |
+| 5.1.0 | 14.1.3          | 14-bullseye  | 14.2.1 | 5.1.0         | 3.x, 4.0  |
 
 ## Improve Performance
 
@@ -175,4 +163,3 @@ Identify big folders that:
 
 - Are part of your `.gitignore` file
 - Are subject to frequent R/W operations or contains a lot of file
-
