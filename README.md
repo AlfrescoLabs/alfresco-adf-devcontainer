@@ -3,6 +3,23 @@
 ## Overview
 
 This project contains personal setup of VSCode environment; please feel free to propose changes and ideas.
+Modules installed:
+
+
+**General**
+- github-vscode-theme: look to make it more readible and visible that I am in a container
+- markdown-all-in-one
+- excalidraw-editor: visual editor for visual notes, just create an `*.excalidraw` file to use it
+  
+**Angular**
+- vscode-eslint
+- Angular2
+- ng-template
+- prettier-vscode
+- vscode-jest-runner
+
+**NX**
+- nrwl.angular-console
 
 The configuration can be found in ./devcontainer/devcontainer.json, follow the Microsoft official documentation if needed <https://code.visualstudio.com/docs/devcontainers/containers>.
 
@@ -87,7 +104,7 @@ If you are starting from <https://www.alfresco.com/abn/adf/docs/tutorials/creati
 ```
 3. Reopen the project in container .
 
-You now have all the tools to run `yo` and follow: <https://www.alfresco.com/abn/adf/docs/tutorials/creating-your-first-adf-application/>. Because we want to generate code in the current folder do not provide a name.
+You now have all the tools to run `yo` and follow: <https://www.alfresco.com/abn/adf/docs/tutorials/creating-your-first-adf-application/>. Because we want to generate code in the current folder do not provide a name just hit return when prompted.
 
 
 > **IMPORTANT** do not manually delete folders that are mounted as volumes, in this case, instead of `rm -rf node_modules` use `rm -rf node_modules/*` or the mount risk to be lost. The same applies to `.angular` folder.
